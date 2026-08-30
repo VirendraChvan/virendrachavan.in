@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Virendra Chavan's personal website - coming soon." />
+  <title>Virendra Chavan - Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f9f9f9;
+      --border: rgba(0, 0, 0, 0.1);
+      --text-primary: #0d0d0d;
+      --text-muted: #888888;
+      --accent: #111111;
+      --accent-soft: rgba(0, 0, 0, 0.06);
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.07;
+      pointer-events: none;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      width: 500px; height: 500px;
+      background: #cccccc;
+      top: -150px; right: -100px;
+    }
+
+    body::after {
+      width: 350px; height: 350px;
+      background: #aaaaaa;
+      bottom: -100px; left: -80px;
+      animation-delay: -6s;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, 20px) scale(1.05); }
+    }
+
+    .card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 56px 64px;
+      max-width: 560px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.07);
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 22px; font-weight: 600;
+      color: var(--accent);
+      animation: fadeUp 0.9s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .name {
+      font-size: clamp(1.4rem, 4vw, 1.75rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+      animation: fadeUp 0.9s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .divider {
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, #111111, #888888);
+      border-radius: 2px;
+      margin: 20px auto;
+      animation: fadeUp 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      color: var(--accent);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      animation: fadeUp 0.9s 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .badge .dot {
+      width: 6px; height: 6px;
+      background: #ff3333;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.3; transform: scale(0.7); }
+    }
+
+    .description {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      animation: fadeUp 0.9s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 28px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      animation: fadeUp 0.9s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    footer span { color: #111111; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <div class="avatar" aria-hidden="true">VC</div>
+    <h1 class="name">This is the Website of<br />Virendra Chavan</h1>
+    <div class="divider" aria-hidden="true"></div>
+    <div class="badge">
+      <span class="dot" aria-hidden="true"></span>
+      Coming Soon
+    </div>
+    <p class="description">
+      Something great is on the way.<br />
+      Stay tuned - this page will be live very soon.
+    </p>
+  </div>
+  <footer>&copy; 2026 <span>Virendra Chavan</span>. All rights reserved.</footer>
+</body>
+</html>
