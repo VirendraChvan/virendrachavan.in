@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projects by Virendra Chavan — Python Full-Stack Developer. Full-Stack Exam Portal and E-Vakeel Legal Platform." />
+  <meta property="og:title" content="Projects — Virendra Chavan" />
+  <meta property="og:type" content="website" />
+  <title>Projects — Virendra Chavan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Fraunces:ital,opsz,wght@1,9..144,600&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@400,500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════ CUSTOM CURSOR ══════════════════════════════ -->
+<div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════ NAVIGATION ═════════════════════════════ -->
+<nav id="nav" class="nav-projects" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-wordmark" aria-label="Virendra Chavan — home">VC<span class="logo-dot" aria-hidden="true"></span></a>
+    <div class="nav-links">
+      <a href="/projects" class="nav-link" style="color:var(--color-white)">Work</a>
+      <a href="/#experience" class="nav-link" data-cursor="VIEW">Experience</a>
+      <a href="/#skills" class="nav-link" data-cursor="VIEW">Skills</a>
+      <a href="/#contact" class="nav-link" data-cursor="VIEW">Contact</a>
+    </div>
+    <div class="nav-avail">
+      <span class="avail-dot" aria-hidden="true"></span>
+      <span class="avail-text">Available</span>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ──────────────────────── PAGE HERO ───────────────────────────────── -->
+  <section class="section section-black proj-page-section" aria-label="Projects header">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="section-inner proj-page-inner">
+      <a href="/" class="proj-back mono" data-cursor="VIEW">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Back to home
+      </a>
+      <div>
+        <p class="proj-page-kicker mono">02 Projects &mdash; 2023 to 2026</p>
+        <h1 class="proj-page-title">Selected<br>Work</h1>
+      </div>
+      <div class="proj-page-rule" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────── PROJECT 01 — EXAM PORTAL ────────────────── -->
+  <section id="exam-portal" class="section section-black project-spread"
+           aria-label="Project: Full-Stack Exam Portal">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="section-inner spread-inner spread-dark">
+
+      <div class="spread-grid spread-grid-right">
+
+        <div class="spread-content" id="spread-exam-content">
+          <span class="spread-index mono" aria-hidden="true">01</span>
+          <h2 class="spread-title">Full-Stack<br>Exam Portal</h2>
+          <p class="spread-meta mono">Oct 2025 &ndash; Mar 2026</p>
+
+          <div class="tech-tags" aria-label="Technologies used">
+            <span class="tech-tag mono">React</span>
+            <span class="tech-tag mono">FastAPI</span>
+            <span class="tech-tag mono">PostgreSQL</span>
+            <span class="tech-tag mono">Redis</span>
+            <span class="tech-tag mono">WebRTC</span>
+          </div>
+
+          <ul class="spread-list">
+            <li>Built a responsive online examination platform with Admin, Supervisor, and Learner workflows using React and Redux Toolkit.</li>
+            <li>Engineered a scalable FastAPI backend with PostgreSQL persistence, Redis caching, and session management.</li>
+            <li>Added real-time proctoring and candidate monitoring with WebRTC (Simple Peer).</li>
+            <li>Created a document-processing pipeline for importing questions from PDF, DOCX, and Excel files.</li>
+            <li>Secured multi-role platform access using JWT authentication and RBAC.</li>
+          </ul>
+        </div>
+
+        <div class="spread-visual" aria-hidden="true">
+          <div class="mockup-wrap" data-tilt id="mockup-exam">
+            <div class="tilt-glare"></div>
+            <div class="mockup-browser">
+              <div class="browser-chrome">
+                <span class="b-dot b-red"></span>
+                <span class="b-dot b-yellow"></span>
+                <span class="b-dot b-green"></span>
+                <span class="b-url mono">examportal.app</span>
+              </div>
+              <div class="browser-screen exam-ui">
+                <div class="app-sidebar">
+                  <div class="sidebar-logo"></div>
+                  <div class="sidebar-nav">
+                    <div class="s-item s-active"></div>
+                    <div class="s-item"></div>
+                    <div class="s-item"></div>
+                    <div class="s-item"></div>
+                  </div>
+                </div>
+                <div class="app-body">
+                  <div class="app-topbar">
+                    <div class="topbar-title"></div>
+                    <div class="topbar-badge"></div>
+                  </div>
+                  <div class="app-content">
+                    <div class="exam-card card-active">
+                      <div class="card-label"></div>
+                      <div class="card-q"></div>
+                      <div class="card-options">
+                        <div class="opt opt-sel"></div>
+                        <div class="opt"></div>
+                        <div class="opt"></div>
+                        <div class="opt"></div>
+                      </div>
+                    </div>
+                    <div class="exam-progress">
+                      <div class="prog-bar">
+                        <div class="prog-fill" style="width:62%"></div>
+                      </div>
+                      <span class="prog-label mono">12 / 20</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────── PROJECT 02 — E-VAKEEL ───────────────────── -->
+  <section id="evakeel" class="section section-white project-spread"
+           aria-label="Project: E-Vakeel Legal Platform">
+    <div class="section-inner spread-inner spread-light">
+
+      <div class="spread-grid spread-grid-left">
+
+        <div class="spread-visual" aria-hidden="true">
+          <div class="mockup-wrap" data-tilt id="mockup-evakeel">
+            <div class="tilt-glare"></div>
+            <div class="mockup-browser mockup-browser-dark">
+              <div class="browser-chrome browser-chrome-dark">
+                <span class="b-dot b-red"></span>
+                <span class="b-dot b-yellow"></span>
+                <span class="b-dot b-green"></span>
+                <span class="b-url b-url-dark mono">e-vakeel.in</span>
+              </div>
+              <div class="browser-screen evakeel-ui">
+                <div class="ev-header">
+                  <div class="ev-logo"></div>
+                  <div class="ev-nav">
+                    <div class="ev-nl"></div>
+                    <div class="ev-nl"></div>
+                    <div class="ev-nl"></div>
+                  </div>
+                </div>
+                <div class="ev-hero-band">
+                  <div class="ev-hero-text">
+                    <div class="ev-h1"></div>
+                    <div class="ev-sub"></div>
+                    <div class="ev-cta"></div>
+                  </div>
+                </div>
+                <div class="ev-cards">
+                  <div class="ev-card">
+                    <div class="ev-ci"></div>
+                    <div class="ev-ct"></div>
+                    <div class="ev-cm"></div>
+                  </div>
+                  <div class="ev-card">
+                    <div class="ev-ci"></div>
+                    <div class="ev-ct"></div>
+                    <div class="ev-cm"></div>
+                  </div>
+                  <div class="ev-card">
+                    <div class="ev-ci"></div>
+                    <div class="ev-ct"></div>
+                    <div class="ev-cm"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="spread-content" id="spread-evakeel-content">
+          <span class="spread-index spread-index-dark mono" aria-hidden="true">02</span>
+          <h2 class="spread-title spread-title-dark">E-Vakeel<br>Legal Platform</h2>
+          <p class="spread-meta spread-meta-dark mono">May 2023 &ndash; Sep 2023</p>
+
+          <div class="tech-tags" aria-label="Technologies used">
+            <span class="tech-tag tech-tag-dark mono">Python</span>
+            <span class="tech-tag tech-tag-dark mono">Django</span>
+            <span class="tech-tag tech-tag-dark mono">PostgreSQL</span>
+            <span class="tech-tag tech-tag-dark mono">JavaScript</span>
+          </div>
+
+          <ul class="spread-list spread-list-dark">
+            <li>Developed a Django-based legal platform for consumers and advocates to publish, organise, and access legal content.</li>
+            <li>Built Google Charts dashboards to visualise user activity, blog posts, and feedback metrics.</li>
+            <li>Implemented dynamic content workflows with Django ORM and the admin interface.</li>
+            <li>Added user-role management and content-moderation capabilities for administrators.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────── BOTTOM CTA ──────────────────────────────── -->
+  <section class="section section-black" aria-label="Contact call to action">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="section-inner proj-cta-inner">
+      <p class="mono" style="color:var(--color-grey-on-dark)">End of projects &mdash; Vol.&nbsp;01 / 2026</p>
+      <h2 class="proj-cta-headline">Liked what you see?</h2>
+      <a href="/#contact" class="proj-cta-link" data-cursor="VIEW">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        Get in touch
+      </a>
+      <a href="/" class="proj-back mono" style="margin-top:1rem;" data-cursor="VIEW">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Back to home
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════ SCRIPTS ═══════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="/static/js/main.js"></script>
+</body>
+</html>
