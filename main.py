@@ -37,12 +37,12 @@ class ContactForm(BaseModel):
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="index.html")
 
 
 @app.get("/projects", response_class=HTMLResponse)
 async def projects_page(request: Request):
-    return templates.TemplateResponse("projects.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="projects.html")
 
 
 @app.post("/contact")
