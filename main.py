@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, FileResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, FileResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, EmailStr, field_validator
@@ -9,16 +9,62 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import os
 import html as html_module
+import asyncio
+import urllib.request
+from contextlib import asynccontextmanager
+import logging
 
 load_dotenv()
 
-app = FastAPI(title="Virendra Chavan Portfolio")
+logger = logging.getLogger("keep_alive")
+
+
+async def _self_ping(url: str, interval: int = 30) -> None:
+    """Ping own /health endpoint every `interval` seconds to prevent Render free-tier sleep."""
+    await asyncio.sleep(10)  # short delay so server is fully ready before first ping
+    while True:
+        try:
+            loop = asyncio.get_event_loop()
+            await loop.run_in_executor(
+                None,
+                lambda: urllib.request.urlopen(url, timeout=10).read()
+            )
+            logger.debug("Keep-alive ping sent to %s", url)
+        except Exception as exc:
+            logger.warning("Keep-alive ping failed: %s", exc)
+        await asyncio.sleep(interval)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Render sets RENDER_EXTERNAL_URL automatically; fallback to localhost for local dev
+    base_url = os.getenv("RENDER_EXTERNAL_URL", "http://127.0.0.1:8000").rstrip("/")
+    ping_url = f"{base_url}/health"
+    task = asyncio.create_task(_self_ping(ping_url))
+    logger.info("Keep-alive task started — pinging %s every 30 s", ping_url)
+    try:
+        yield
+    finally:
+        task.cancel()
+        try:
+            await task
+        except asyncio.CancelledError:
+            pass
+
+
+app = FastAPI(title="Virendra Chavan Portfolio", lifespan=lifespan)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 
 # ── Root-level well-known files (crawlers and browsers require exact paths) ──
+
+@app.get("/health", include_in_schema=False)
+async def health():
+    """Lightweight health check — used by the keep-alive self-ping task."""
+    return JSONResponse({"status": "ok"})
+
 
 @app.get("/robots.txt", include_in_schema=False)
 async def robots():
