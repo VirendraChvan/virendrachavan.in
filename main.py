@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, EmailStr, field_validator
@@ -16,6 +16,29 @@ app = FastAPI(title="Virendra Chavan Portfolio")
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+
+
+# ── Root-level well-known files (crawlers and browsers require exact paths) ──
+
+@app.get("/robots.txt", include_in_schema=False)
+async def robots():
+    return FileResponse("static/robots.txt", media_type="text/plain")
+
+
+@app.get("/sitemap.xml", include_in_schema=False)
+async def sitemap():
+    return FileResponse("static/sitemap.xml", media_type="application/xml")
+
+
+@app.get("/site.webmanifest", include_in_schema=False)
+async def webmanifest():
+    return FileResponse("static/site.webmanifest", media_type="application/manifest+json")
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon_ico():
+    # Redirect legacy browsers that request /favicon.ico to the SVG favicon
+    return RedirectResponse(url="/static/favicon.svg", status_code=301)
 
 
 class ContactForm(BaseModel):

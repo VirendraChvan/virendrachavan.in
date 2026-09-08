@@ -121,6 +121,39 @@ button {
   outline-offset: 3px;
 }
 
+/* Skip navigation link — hidden until focused by keyboard */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-red);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus-visible {
+  top: 0;
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* Social link visible label — sr-visible on all, displayed inline with icon */
+.social-link-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-left: 0.4em;
+}
+
 
 /* ─── 3. UTILITY CLASSES ────────────────────────────────────────────────── */
 .mono {

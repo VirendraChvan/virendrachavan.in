@@ -3,20 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Projects by Virendra Chavan — Python Full-Stack Developer. Full-Stack Exam Portal and E-Vakeel Legal Platform." />
-  <meta property="og:title" content="Projects — Virendra Chavan" />
+
+  <!-- Primary meta -->
+  <title>Projects — Virendra Chavan | Python Full-Stack Developer</title>
+  <meta name="description" content="Selected projects by Virendra Chavan — Full-Stack Exam Portal built with React, FastAPI, PostgreSQL and Redis; and E-Vakeel, a Django legal content platform. Python Full-Stack Developer based in Pune, India." />
+  <meta name="author" content="Virendra Chavan" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://virendrachavan.in/projects" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <title>Projects — Virendra Chavan</title>
+  <meta property="og:url" content="https://virendrachavan.in/projects" />
+  <meta property="og:title" content="Projects — Virendra Chavan | Python Full-Stack Developer" />
+  <meta property="og:description" content="Full-Stack Exam Portal (React, FastAPI, PostgreSQL, Redis) and E-Vakeel Legal Platform (Django, PostgreSQL). Python Full-Stack Developer projects by Virendra Chavan, Pune, India." />
+  <meta property="og:site_name" content="Virendra Chavan" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:image" content="https://virendrachavan.in/static/og-preview.jpg" />
+  <meta property="og:image:alt" content="Virendra Chavan portfolio — selected projects preview" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@VirendraChvan" />
+  <meta name="twitter:creator" content="@VirendraChvan" />
+  <meta name="twitter:title" content="Projects — Virendra Chavan | Python Full-Stack Developer" />
+  <meta name="twitter:description" content="Full-Stack Exam Portal and E-Vakeel Legal Platform. Python Full-Stack Developer projects by Virendra Chavan, Pune, India." />
+  <meta name="twitter:image" content="https://virendrachavan.in/static/og-preview.jpg" />
+  <meta name="twitter:image:alt" content="Virendra Chavan portfolio — selected projects preview" />
+
+  <!-- Theme & manifest -->
+  <meta name="theme-color" content="#0E0D0C" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+
+  <!-- JSON-LD Structured Data — WebPage + two SoftwareApplication entities -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://virendrachavan.in/projects#webpage",
+        "url": "https://virendrachavan.in/projects",
+        "name": "Projects — Virendra Chavan | Python Full-Stack Developer",
+        "description": "Selected software projects by Virendra Chavan: Full-Stack Exam Portal and E-Vakeel Legal Platform.",
+        "inLanguage": "en",
+        "isPartOf": { "@id": "https://virendrachavan.in/#website" },
+        "author": { "@id": "https://virendrachavan.in/#person" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://virendrachavan.in/projects#exam-portal",
+        "name": "Full-Stack Exam Portal",
+        "description": "A secure online examination platform supporting 500+ concurrent users, with real-time proctoring via WebRTC, multi-role access control (Admin, Supervisor, Learner), JWT authentication, Redis caching, and automated document-processing pipelines for PDF, DOCX, and Excel question import.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "author": { "@id": "https://virendrachavan.in/#person" },
+        "programmingLanguage": ["Python", "JavaScript"],
+        "keywords": "React, FastAPI, PostgreSQL, Redis, WebRTC, JWT, RBAC",
+        "dateCreated": "2025-10",
+        "datePublished": "2026-03"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://virendrachavan.in/projects#evakeel",
+        "name": "E-Vakeel Legal Platform",
+        "description": "A Django-based legal content platform enabling consumers and advocates to publish, organise, and access legal content. Features Google Charts dashboards, content moderation, role management, and Django ORM-driven workflows.",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Web",
+        "author": { "@id": "https://virendrachavan.in/#person" },
+        "programmingLanguage": ["Python", "JavaScript"],
+        "keywords": "Django, PostgreSQL, JavaScript, Google Charts, Content Moderation",
+        "dateCreated": "2023-05",
+        "datePublished": "2023-09"
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Fraunces:ital,opsz,wght@1,9..144,600&display=swap" rel="stylesheet" />
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@400,500&display=swap" rel="stylesheet" />
 
-  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
   <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body>
+
+<!-- ═══════════════════════════ SKIP NAVIGATION ═══════════════════════════ -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- ══════════════════════════ CUSTOM CURSOR ══════════════════════════════ -->
 <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
@@ -27,7 +105,7 @@
   <div class="nav-inner">
     <a href="/" class="nav-wordmark" aria-label="Virendra Chavan — home">VC<span class="logo-dot" aria-hidden="true"></span></a>
     <div class="nav-links">
-      <a href="/projects" class="nav-link" style="color:var(--color-white)">Work</a>
+      <a href="/projects" class="nav-link" style="color:var(--color-white)" aria-current="page">Work</a>
       <a href="/#experience" class="nav-link" data-cursor="VIEW">Experience</a>
       <a href="/#skills" class="nav-link" data-cursor="VIEW">Skills</a>
       <a href="/#contact" class="nav-link" data-cursor="VIEW">Contact</a>
@@ -39,7 +117,7 @@
   </div>
 </nav>
 
-<main>
+<main id="main-content">
 
   <!-- ──────────────────────── PAGE HERO ───────────────────────────────── -->
   <section class="section section-black proj-page-section" aria-label="Projects header">
@@ -54,7 +132,7 @@
         Back to home
       </a>
       <div>
-        <p class="proj-page-kicker mono">02 Projects &mdash; 2023 to 2026</p>
+        <p class="proj-page-kicker mono">02 Projects &mdash; <time datetime="2023">2023</time> to <time datetime="2026">2026</time></p>
         <h1 class="proj-page-title">Selected<br>Work</h1>
       </div>
       <div class="proj-page-rule" aria-hidden="true"></div>
@@ -72,7 +150,7 @@
         <div class="spread-content" id="spread-exam-content">
           <span class="spread-index mono" aria-hidden="true">01</span>
           <h2 class="spread-title">Full-Stack<br>Exam Portal</h2>
-          <p class="spread-meta mono">Oct 2025 &ndash; Mar 2026</p>
+          <p class="spread-meta mono"><time datetime="2025-10">Oct 2025</time> &ndash; <time datetime="2026-03">Mar 2026</time></p>
 
           <div class="tech-tags" aria-label="Technologies used">
             <span class="tech-tag mono">React</span>
@@ -202,7 +280,7 @@
         <div class="spread-content" id="spread-evakeel-content">
           <span class="spread-index spread-index-dark mono" aria-hidden="true">02</span>
           <h2 class="spread-title spread-title-dark">E-Vakeel<br>Legal Platform</h2>
-          <p class="spread-meta spread-meta-dark mono">May 2023 &ndash; Sep 2023</p>
+          <p class="spread-meta spread-meta-dark mono"><time datetime="2023-05">May 2023</time> &ndash; <time datetime="2023-09">Sep 2023</time></p>
 
           <div class="tech-tags" aria-label="Technologies used">
             <span class="tech-tag tech-tag-dark mono">Python</span>
@@ -252,9 +330,9 @@
 </main>
 
 <!-- ═══════════════════════════════ SCRIPTS ═══════════════════════════════ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-<script src="/static/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="/static/js/main.js" defer></script>
 </body>
 </html>

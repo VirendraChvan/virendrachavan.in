@@ -1,0 +1,8 @@
+# robots.txt — virendrachavan.in
+# Allow all well-behaved crawlers to index all public pages.
+# Sitemap reference is absolute with canonical HTTPS origin.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://virendrachavan.in/sitemap.xml
