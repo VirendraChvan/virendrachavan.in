@@ -93,6 +93,12 @@ async def favicon_ico():
     return RedirectResponse(url="/static/favicon.svg", status_code=301)
 
 
+@app.get("/googleba0f8eaf6b552094.html", include_in_schema=False)
+async def google_verification():
+    """Serves the Google Search Console HTML verification file content."""
+    return HTMLResponse("google-site-verification: googleba0f8eaf6b552094.html")
+
+
 class ContactForm(BaseModel):
     name: str
     email: EmailStr
