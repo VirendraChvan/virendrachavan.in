@@ -403,17 +403,28 @@ function initCursor() {
     dotY = e.clientY;
 
     // Invert cursor on light-background sections
-    const el = document.elementFromPoint(e.clientX, e.clientY);
-    if (el) {
-      const section = el.closest('.section-white, .section-paper');
-      if (section) {
-        dot.classList.add('cursor-dark');
-        ring.classList.add('cursor-dark');
-      } else {
-        dot.classList.remove('cursor-dark');
-        ring.classList.remove('cursor-dark');
+    // elementsFromPoint returns ALL elements at this coordinate (including the
+    // cursor dot/ring on top). Skip any cursor element, then check the rest.
+    const elements = document.elementsFromPoint(e.clientX, e.clientY);
+    let isDark = false;
+    for (const el of elements) {
+      if (el.id === 'cursor-dot' || el.id === 'cursor-ring') continue;
+      if (el.classList.contains('section-white') || el.classList.contains('section-paper')) {
+        isDark = true;
+        break;
+      }
+      if (el.classList.contains('section-black') || el.tagName === 'BODY') {
+        break; // definitely on a dark section, stop looking
       }
     }
+    if (isDark) {
+      dot.classList.add('cursor-dark');
+      ring.classList.add('cursor-dark');
+    } else {
+      dot.classList.remove('cursor-dark');
+      ring.classList.remove('cursor-dark');
+    }
+
   }, { passive: true });
 
   document.body.style.cursor = 'none';
