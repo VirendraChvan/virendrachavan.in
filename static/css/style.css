@@ -1475,7 +1475,7 @@ button {
 }
 
 
-/* ─── 16. CONTACT / BACK COVER ──────────────────────────────────────────── */
+/* ─── 16. CONTACT SECTION ────────────────────────────────────────────────── */
 .section-contact {
   min-height: 100vh;
   display: flex;
@@ -1494,7 +1494,7 @@ button {
 .contact-top {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6rem;
+  gap: 5rem;
   align-items: start;
 }
 
@@ -1507,72 +1507,81 @@ button {
   color: var(--color-white);
   margin-bottom: 1.25rem;
   clip-path: inset(100% 0 0 0);
-  /* JS animates to inset(0 0 0 0) */
 }
 
 .contact-sub {
   font-size: var(--text-small);
   color: var(--color-grey-on-dark);
-  line-height: 1.6;
+  line-height: 1.65;
   max-width: 42ch;
+  margin-top: 0.5rem;
 }
 
-/* Contact form */
-.contact-form-wrap { }
+/* ── Contact Form ─────────────────────────────────────────────── */
+.contact-form-wrap { position: relative; }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 1.75rem;
+  gap: 6px;
+  margin-bottom: 1.5rem;
 }
 
 .form-label {
   color: var(--color-grey-on-dark);
   font-size: var(--text-micro);
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .form-input {
   width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--color-hairline-dark);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-hairline-dark);
+  border-radius: 3px;
   color: var(--color-white);
-  padding: 10px 0;
+  padding: 12px 14px;
   font-family: var(--font-body);
   font-size: var(--text-body);
   outline: none;
-  transition: border-color 0.25s;
+  transition: border-color 0.2s, background 0.2s;
   resize: none;
   appearance: none;
   -webkit-appearance: none;
 }
 
 .form-input::placeholder {
-  color: rgba(156, 154, 151, 0.4);
+  color: rgba(156, 154, 151, 0.35);
   font-size: var(--text-small);
 }
 
 .form-input:focus {
-  border-bottom-color: var(--color-red);
+  border-color: var(--color-red);
+  background: rgba(228, 0, 43, 0.04);
+  outline: none;
+}
+
+.form-input:focus-visible {
+  outline: none; /* handled by border-color */
 }
 
 .form-textarea {
-  min-height: 120px;
+  min-height: 130px;
+  line-height: 1.6;
 }
 
 .form-actions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
   flex-wrap: wrap;
+  margin-top: 0.25rem;
 }
 
 .btn-primary {
@@ -1588,7 +1597,8 @@ button {
   text-transform: uppercase;
   cursor: pointer;
   border: 2px solid var(--color-red);
-  transition: background 0.2s, color 0.2s;
+  border-radius: 2px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
   position: relative;
 }
 
