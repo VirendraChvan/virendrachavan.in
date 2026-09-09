@@ -401,6 +401,19 @@ function initCursor() {
   document.addEventListener('mousemove', e => {
     dotX = e.clientX;
     dotY = e.clientY;
+
+    // Invert cursor on light-background sections
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    if (el) {
+      const section = el.closest('.section-white, .section-paper');
+      if (section) {
+        dot.classList.add('cursor-dark');
+        ring.classList.add('cursor-dark');
+      } else {
+        dot.classList.remove('cursor-dark');
+        ring.classList.remove('cursor-dark');
+      }
+    }
   }, { passive: true });
 
   document.body.style.cursor = 'none';
