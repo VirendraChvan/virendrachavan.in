@@ -180,34 +180,40 @@ SEO files:
 
 ---
 
-## 8. External Steps You Must Do
+## 8. External Steps to Appear on Search Engines (2025 Guide)
 
 > [!IMPORTANT]
-> Everything below requires your accounts and cannot be done by code.
+> Everything below requires your accounts and cannot be done by code. Google indexing takes anywhere from a few days to a few weeks. Following these steps is the fastest way to get your new site indexed in 2025.
 
 ### Step 1 — Deploy and verify routes are live
 1. Push the updated code to your Render.com-connected Git branch
 2. Confirm these URLs return HTTP 200:
    - `https://virendrachavan.in/`
    - `https://virendrachavan.in/projects`
-   - `https://virendrachavan.in/robots.txt`
    - `https://virendrachavan.in/sitemap.xml`
-   - `https://virendrachavan.in/static/og-preview.jpg`
 
-### Step 2 — Google Search Console
-1. Go to https://search.google.com/search-console/ → Add property → `https://virendrachavan.in/`
-2. Choose **HTML tag** verification method
-3. Copy the `<meta name="google-site-verification" content="XXXXX">` tag
-4. **Tell me the code** — I'll add it to both `index.html` and `projects.html`
-5. After adding, click Verify in GSC
-6. Go to **Sitemaps** → Submit `https://virendrachavan.in/sitemap.xml`
-7. Use **URL Inspection** to request indexing for `/` and `/projects`
+### Step 2 — Submit to Google Search Console (Crucial for Indexing)
+1. Go to [Google Search Console](https://search.google.com/search-console/) and click **Start Now**.
+2. Sign in with your Google/Gmail account.
+3. Choose **URL Prefix** as the property type and enter `https://virendrachavan.in/`
+4. Choose the **HTML tag** verification method.
+5. Copy the `<meta name="google-site-verification" content="XXXXX">` tag it gives you.
+6. **Send that code to me here** — I will add it to your website's code and deploy it.
+7. Once I deploy the code, click **Verify** in GSC.
 
-### Step 3 — Bing Webmaster Tools
-1. Go to https://www.bing.com/webmasters/
-2. Add site: `https://virendrachavan.in`
-3. Submit sitemap: `https://virendrachavan.in/sitemap.xml`
-4. Use the GSC import option to copy over the Google verification
+### Step 3 — Submit your Sitemap to Google
+1. In the Google Search Console sidebar, click on **Sitemaps**.
+2. Enter `sitemap.xml` in the URL field and click **Submit**. (This tells Google about all your pages at once).
+
+### Step 4 — Request Fast Indexing
+1. At the top of GSC, paste your main URL (`https://virendrachavan.in/`) into the **URL Inspection** search bar and hit Enter.
+2. Click **Test Live URL** to ensure Googlebot isn't blocked.
+3. Click **Request Indexing**.
+4. Repeat this process for `https://virendrachavan.in/projects`.
+
+### Step 5 — Submit to Bing Webmaster Tools
+1. Go to [Bing Webmaster Tools](https://www.bing.com/webmasters/).
+2. Log in and use the **Import from Google Search Console** option. This instantly verifies your site on Bing and Yahoo search engines without needing extra code.
 
 ### Step 4 — Verify social profile URLs
 Confirm these are the correct public URLs for your accounts:
