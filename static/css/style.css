@@ -2167,3 +2167,115 @@ button {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+/* ─── SERVICES / WHAT I BUILD SECTION ──────────────────────────────────── */
+.section-services {
+  padding-top:    var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.services-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.services-header {
+  max-width: 640px;
+}
+
+.section-label--light {
+  color: var(--color-grey-on-dark);
+}
+
+.services-lead {
+  font-size: var(--text-body-lg);
+  line-height: var(--lh-body);
+  color: var(--color-grey-on-dark);
+  margin-top: var(--space-sm);
+}
+
+.services-lead strong {
+  color: var(--color-white);
+  font-weight: 500;
+}
+
+/* 2-column grid, collapses to 1 on mobile */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-hairline-dark);
+  border-radius: 4px;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.service-card:hover {
+  border-color: rgba(228, 0, 43, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.service-icon {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.1em;
+  color: var(--color-red);
+  display: block;
+}
+
+.service-name {
+  font-family: var(--font-body);
+  font-size: var(--text-heading);
+  font-weight: 500;
+  color: var(--color-white);
+  line-height: 1.3;
+}
+
+.service-desc {
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--color-grey-on-dark);
+  flex: 1;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+/* Dark variant of skill tag — for use on dark section backgrounds */
+.skill-tag--dark {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-grey-on-dark);
+  border: 1px solid var(--color-hairline-dark);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+}
+
+/* Hero location + hire line (below main subhead) */
+.hero-subhead-location {
+  font-size: var(--text-small);
+  color: var(--color-grey-on-dark);
+  margin-top: 0.35rem;
+  letter-spacing: 0.06em;
+}
