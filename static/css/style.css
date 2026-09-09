@@ -1684,7 +1684,7 @@ button {
 .contact-details {
   display: grid;
   grid-template-columns: 1fr auto;
-  align-items: center;
+  align-items: start;        /* socials sit at top-right, not vertically centred */
   gap: 2rem;
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-hairline-dark);
@@ -1732,9 +1732,11 @@ button {
 
 .contact-socials {
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  align-items: flex-end;
+  flex-direction: row;       /* horizontal: icons + names in a row */
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .social-link {
@@ -1812,14 +1814,14 @@ button {
     gap: 3rem;
   }
   .contact-details {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr;  /* stack: address on top, socials below */
+    gap: 1.25rem;
   }
   .contact-socials {
-    flex-direction: row;
+    flex-direction: row;         /* keep socials horizontal below address */
     flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem 1.5rem;
+    justify-content: flex-start; /* left-align when stacked */
+    gap: 0.5rem 1.5rem;
   }
 }
 
