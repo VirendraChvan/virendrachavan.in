@@ -37,19 +37,25 @@ async def _self_ping(url: str, interval: int = 30) -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Render sets RENDER_EXTERNAL_URL automatically; fallback to localhost for local dev
-    base_url = os.getenv("RENDER_EXTERNAL_URL", "http://127.0.0.1:8000").rstrip("/")
-    ping_url = f"{base_url}/health"
-    task = asyncio.create_task(_self_ping(ping_url))
-    logger.info("Keep-alive task started — pinging %s every 30 s", ping_url)
+    # Render sets RENDER_EXTERNAL_URL automatically on all paid and free services.
+    # If it's absent we're in local dev — skip pinging to avoid noisy warnings.
+    render_url = os.getenv("RENDER_EXTERNAL_URL", "").rstrip("/")
+    if render_url:
+        ping_url = f"{render_url}/health"
+        task = asyncio.create_task(_self_ping(ping_url))
+        logger.info("Keep-alive task started — pinging %s every 30 s", ping_url)
+    else:
+        task = None
+        logger.info("Keep-alive: RENDER_EXTERNAL_URL not set — skipping (local dev mode)")
     try:
         yield
     finally:
-        task.cancel()
-        try:
-            await task
-        except asyncio.CancelledError:
-            pass
+        if task:
+            task.cancel()
+            try:
+                await task
+            except asyncio.CancelledError:
+                pass
 
 
 app = FastAPI(title="Virendra Chavan Portfolio", lifespan=lifespan)
