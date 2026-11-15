@@ -13,7 +13,9 @@ import os
 from pathlib import Path
 import html as html_module
 import asyncio
+import json
 import urllib.request
+import urllib.error
 from contextlib import asynccontextmanager
 import logging
 
@@ -130,31 +132,56 @@ async def projects_page(request: Request):
     return templates.TemplateResponse(request=request, name="projects.html")
 
 
+def _send_via_resend(api_key: str, from_addr: str, to_addr: str, reply_to: str, subject: str, text: str, html: str) -> dict:
+    """Send transactional email via Resend HTTPS REST API (Port 443 — works on Render free tier)."""
+    payload = {
+        "from": from_addr,
+        "to": [to_addr],
+        "reply_to": reply_to,
+        "subject": subject,
+        "text": text,
+        "html": html,
+    }
+    req = urllib.request.Request(
+        "https://api.resend.com/emails",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "User-Agent": "resend-python/2.0.0",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            logger.info("Resend email sent successfully, id: %s", data.get("id"))
+            return {"status": "ok"}
+    except urllib.error.HTTPError as exc:
+        err_msg = "Resend API error"
+        try:
+            err_data = json.loads(exc.read().decode("utf-8"))
+            err_msg = err_data.get("message", err_msg)
+        except Exception:
+            pass
+        logger.error("Resend HTTPError %s: %s", exc.code, err_msg)
+        return {"status": "error", "detail": f"Failed to send email: {err_msg}"}
+    except Exception as exc:
+        logger.error("Resend error: %s", exc)
+        return {"status": "error", "detail": f"Failed to send: {exc}"}
+
+
 @app.post("/contact")
 async def contact(form: ContactForm):
     load_dotenv(BASE_DIR / ".env", override=True)
-    smtp_host = os.getenv("SMTP_HOST", "smtp.gmail.com")
-    smtp_port = int(os.getenv("SMTP_PORT", 587))
-    smtp_user = os.getenv("SMTP_USER", "")
-    smtp_pass = os.getenv("SMTP_PASS", "")
+    resend_api_key = os.getenv("RESEND_API_KEY", "").strip()
     dest_email = os.getenv("DEST_EMAIL", "chavanvirendra11@gmail.com")
-
-    if not smtp_user or not smtp_pass:
-        return {"status": "error", "detail": "Mail server not configured on this server."}
 
     # Sanitise for HTML email body
     safe_name = html_module.escape(form.name)
     safe_email = html_module.escape(str(form.email))
     safe_subject = html_module.escape(form.subject)
     safe_message = html_module.escape(form.message).replace("\n", "<br>")
-
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = Header(f"Portfolio Contact from {form.name}: {form.subject}", "utf-8")
-    msg["From"] = f"Portfolio Contact <{smtp_user}>"
-    msg["To"] = dest_email
-    msg["Reply-To"] = str(form.email)
-    msg["Date"] = formatdate(localtime=True)
-    msg["Message-ID"] = make_msgid(domain="gmail.com")
 
     plain_body = (
         f"New message from your portfolio contact form.\n\n"
@@ -215,6 +242,38 @@ async def contact(form: ContactForm):
   </table>
 </body>
 </html>"""
+
+    # 1. Primary: Resend HTTPS API (Port 443 — reliable across all platforms & Render free tier)
+    if resend_api_key:
+        resend_from = os.getenv("RESEND_FROM", "Portfolio Contact <onboarding@resend.dev>")
+        email_subject = f"Portfolio Contact from {form.name}: {form.subject}"
+        return await asyncio.to_thread(
+            _send_via_resend,
+            resend_api_key,
+            resend_from,
+            dest_email,
+            str(form.email),
+            email_subject,
+            plain_body,
+            html_body,
+        )
+
+    # 2. Fallback: SMTP via aiosmtplib (requires open outbound port 587)
+    smtp_host = os.getenv("SMTP_HOST", "smtp.gmail.com")
+    smtp_port = int(os.getenv("SMTP_PORT", 587))
+    smtp_user = os.getenv("SMTP_USER", "")
+    smtp_pass = os.getenv("SMTP_PASS", "")
+
+    if not smtp_user or not smtp_pass:
+        return {"status": "error", "detail": "Mail server not configured on this server."}
+
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = Header(f"Portfolio Contact from {form.name}: {form.subject}", "utf-8")
+    msg["From"] = f"Portfolio Contact <{smtp_user}>"
+    msg["To"] = dest_email
+    msg["Reply-To"] = str(form.email)
+    msg["Date"] = formatdate(localtime=True)
+    msg["Message-ID"] = make_msgid(domain="gmail.com")
 
     msg.attach(MIMEText(plain_body, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
