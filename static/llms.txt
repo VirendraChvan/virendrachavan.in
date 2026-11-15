@@ -1,0 +1,55 @@
+# Virendra Chavan
+
+> Virendra Chavan is a Python Full-Stack Developer and Generative AI specialist based in Pune, Maharashtra, India (originally from Kolhapur). He builds scalable web applications, RAG pipelines, LLM integrations, and REST APIs using Django, FastAPI, React, LangChain, and cloud platforms.
+
+## About
+
+Virendra Chavan is a results-driven Python Full-Stack Developer with expertise in Django, FastAPI, React.js, Generative AI, RAG pipelines, LangChain, LangGraph, OpenAI API, PostgreSQL, MongoDB, Redis, Docker, and AWS. He holds a B.Tech. in Computer Engineering from Abhinav Education Society's College of Engineering and Technology, Bhor, Maharashtra. He is available for full-time roles, freelance projects, and remote opportunities across India and worldwide.
+
+- **Location:** Pune, Maharashtra, India (originally from Kolhapur)
+- **Email:** chavanvirendra11@gmail.com
+- **Phone:** +91 7385806788
+- **Job Title:** Python Full-Stack Developer & Generative AI Specialist
+
+## Professional Experience
+
+- **Python Developer** at Phoenix Infotech, Kolhapur, Maharashtra (Oct 2025 – Mar 2026)
+  - Developed a secure Exam Portal with FastAPI, React, PostgreSQL, and Redis supporting 500+ concurrent users
+  - Implemented JWT authentication and role-based access control (Admin, Supervisor, Learner)
+  - Automated exam question extraction from PDF, DOCX, and Excel files, reducing admin overhead by 60%
+  - Used Redis caching and Celery-based async processing to reduce API response times by 40%
+
+## Technical Skills
+
+- **Languages:** Python, JavaScript, SQL
+- **Backend:** Django, FastAPI, Flask, Celery
+- **Frontend:** React.js, Redux Toolkit
+- **Generative AI / LLM:** RAG, LangChain, LangGraph, Ollama, OpenAI API, MCP
+- **Databases:** PostgreSQL, MySQL, MongoDB, Redis
+- **Cloud / DevOps:** Docker, AWS, GitHub, CI/CD
+- **APIs / Security:** REST APIs, JWT Authentication, RBAC
+- **Real-Time:** WebSocket, WebRTC, Microservices
+
+## Projects
+
+- [Full-Stack Exam Portal](https://virendrachavan.in/projects#exam-portal): Online examination platform with real-time proctoring, document processing, and multi-role access control. Built with React, FastAPI, PostgreSQL, Redis, and WebRTC (Oct 2025 – Mar 2026).
+- [E-Vakeel Legal Platform](https://virendrachavan.in/projects#evakeel): Django-based legal content platform for consumers and advocates with dashboards, content moderation, and role management. Built with Python, Django, PostgreSQL, JavaScript (May 2023 – Sep 2023).
+
+## Education
+
+- B.Tech., Computer Engineering — Abhinav Education Society's College of Engineering and Technology, Bhor, Maharashtra (Aug 2022 – May 2025)
+- Diploma, Computer Engineering — Institute of Civil and Rural Engineering, Gargoti, Maharashtra (Aug 2019 – May 2022)
+
+## Certifications & Awards
+
+- Cloud Computing (NPTEL), IIT Kharagpur — 2024
+- 1st Place, Django Web Development Competition — Sep 2023
+- Software Engineering 101, Udemy — 2023
+
+## Links
+
+- [Portfolio Website](https://virendrachavan.in/)
+- [LinkedIn](https://www.linkedin.com/in/virendrachavan/)
+- [GitHub](https://github.com/virendrachavan)
+- [X / Twitter](https://x.com/VirendraChvan)
+

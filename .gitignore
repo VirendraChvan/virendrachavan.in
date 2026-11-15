@@ -17,3 +17,6 @@ __pycache__/
 .idea/
 *.swp
 .DS_Store
+
+# Documentation / Reference
+seo-optimization-reference.md

@@ -70,6 +70,28 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 
+# ── SEO: Add security, caching, and crawler-friendly HTTP headers ──
+
+@app.middleware("http")
+async def add_seo_headers(request: Request, call_next):
+    response = await call_next(request)
+    # Security headers (also a minor Google ranking signal via HTTPS best practices)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    # Allow AI crawlers and search engines to index
+    response.headers["X-Robots-Tag"] = "index, follow, max-image-preview:large, max-snippet:-1"
+    # Cache static assets aggressively, HTML pages briefly
+    path = request.url.path
+    if path.startswith("/static/"):
+        response.headers["Cache-Control"] = "public, max-age=2592000, immutable"  # 30 days
+    elif path in ("/robots.txt", "/sitemap.xml", "/llms.txt", "/site.webmanifest"):
+        response.headers["Cache-Control"] = "public, max-age=86400"  # 1 day
+    else:
+        response.headers["Cache-Control"] = "public, max-age=3600"  # 1 hour for HTML
+    return response
+
+
 # ── Root-level well-known files (crawlers and browsers require exact paths) ──
 
 @app.get("/health", include_in_schema=False)
@@ -86,6 +108,12 @@ async def robots():
 @app.get("/sitemap.xml", include_in_schema=False)
 async def sitemap():
     return FileResponse("static/sitemap.xml", media_type="application/xml")
+
+
+@app.get("/llms.txt", include_in_schema=False)
+async def llms_txt():
+    """Serves llms.txt — LLM-friendly site index per llmstxt.org standard."""
+    return FileResponse("static/llms.txt", media_type="text/plain; charset=utf-8")
 
 
 @app.get("/site.webmanifest", include_in_schema=False)
