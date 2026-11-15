@@ -7,14 +7,18 @@ from dotenv import load_dotenv
 import aiosmtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formatdate, make_msgid
+from email.header import Header
 import os
+from pathlib import Path
 import html as html_module
 import asyncio
 import urllib.request
 from contextlib import asynccontextmanager
 import logging
 
-load_dotenv()
+BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(BASE_DIR / ".env", override=True)
 
 logger = logging.getLogger("keep_alive")
 
@@ -128,6 +132,7 @@ async def projects_page(request: Request):
 
 @app.post("/contact")
 async def contact(form: ContactForm):
+    load_dotenv(BASE_DIR / ".env", override=True)
     smtp_host = os.getenv("SMTP_HOST", "smtp.gmail.com")
     smtp_port = int(os.getenv("SMTP_PORT", 587))
     smtp_user = os.getenv("SMTP_USER", "")
@@ -144,10 +149,12 @@ async def contact(form: ContactForm):
     safe_message = html_module.escape(form.message).replace("\n", "<br>")
 
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"Portfolio Contact: {form.subject}"
-    msg["From"] = f"Portfolio Site <{smtp_user}>"
+    msg["Subject"] = Header(f"Portfolio Contact from {form.name}: {form.subject}", "utf-8")
+    msg["From"] = f"Portfolio Contact <{smtp_user}>"
     msg["To"] = dest_email
     msg["Reply-To"] = str(form.email)
+    msg["Date"] = formatdate(localtime=True)
+    msg["Message-ID"] = make_msgid(domain="gmail.com")
 
     plain_body = (
         f"New message from your portfolio contact form.\n\n"
@@ -209,8 +216,8 @@ async def contact(form: ContactForm):
 </body>
 </html>"""
 
-    msg.attach(MIMEText(plain_body, "plain"))
-    msg.attach(MIMEText(html_body, "html"))
+    msg.attach(MIMEText(plain_body, "plain", "utf-8"))
+    msg.attach(MIMEText(html_body, "html", "utf-8"))
 
     try:
         await aiosmtplib.send(
